@@ -44,7 +44,7 @@ Mesh merge_duplicate_vertices(Mesh& mesh) {
     }
 
     std::cout << "after vertices: " << new_mesh.n_vertices() << "\n";
-    std::cout << "before faces: " << new_mesh.n_faces()<<"\n";
+    std::cout << "after faces: " << new_mesh.n_faces()<<"\n";
     return new_mesh;
 }
 
@@ -59,7 +59,7 @@ bool write_mesh(const Mesh& mesh, const std::string& output_filename) {
 int main(int argc, char* argv[]) {
  
     Mesh mesh, new_mesh;
-    std::string input_file = "../models/spot.obj";
+    std::string input_file = "../models/Opera_Sydney.obj";
     if (!read_mesh(mesh, argc > 1 ? argv[1] : input_file)) {
         return 1;
     }

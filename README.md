@@ -30,8 +30,6 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
     <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/issues">提出新特性</a>
   </p>
 
-</p>
-
 
  本篇README.md面向开发者
  
@@ -126,11 +124,10 @@ Windows X64
 
 ### 作者
 
-EIPsyCongGroo
+[Wzy@EIPsyCongGroo](https://github.com/EIPsyCongGroo)
 
-qq:824353810    
+QQ:824353810    
 
- *您也可以在贡献者名单中参看所有参与该项目的开发者。*
 
 ### 鸣谢
 
