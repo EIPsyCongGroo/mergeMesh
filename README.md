@@ -11,7 +11,7 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
 
 <p align="center">
   <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
-    <img src="/images/compare.png" alt="compare" width="1841" height="1497">
+    <img src="/images/compare.png" alt="compare" width="920" height="750">
   </a>
 
 
