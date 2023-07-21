@@ -59,7 +59,7 @@ bool write_mesh(const Mesh& mesh, const std::string& output_filename) {
 int main(int argc, char* argv[]) {
  
     Mesh mesh, new_mesh;
-    std::string input_file = "../test.obj";
+    std::string input_file = "../spot.obj";
     if (!read_mesh(mesh, argc > 1 ? argv[1] : input_file)) {
         return 1;
     }
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
     new_mesh = merge_duplicate_vertices(mesh);
 
 
-    if (!write_mesh(new_mesh, input_file + "-out.obj")) {
+    if (!write_mesh(new_mesh, argc > 1 ? argv[1] : input_file + "-out.obj")) {
         return 1;
     }
 
