@@ -11,13 +11,9 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
 
 <p align="center">
   <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
-    <img src="/images/spot.png" alt="Before" width="80" height="130">
+    <img src="/images/compare.png" alt="compare" width="1841" height="1497">
   </a>
 
-<p align="center">
-  <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
-    <img src="/images/spot1.png" alt="After" width="80" height="130">
-  </a>
 
 
   <h3 align="center">消除模型内部边界</h3>
