@@ -14,10 +14,15 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
     <img src="/images/spot.png" alt="Before" width="80" height="130">
   </a>
 
+<p align="center">
+  <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
+    <img src="/images/spot1.png" alt="After" width="80" height="130">
+  </a>
 
-  <h3 align="center">"完美的"README模板</h3>
+
+  <h3 align="center">消除模型内部边界</h3>
   <p align="center">
-    一个"完美的"README模板去快速开始你的项目！
+   绿色线为模型内部边界，消除重复点后，内部边界消失，变成一个完整模型。
     <br />
     <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices"><strong>探索本项目的文档 »</strong></a>
     <br />
@@ -41,7 +46,6 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
   - [安装步骤](#安装步骤)
 - [文件目录说明](#文件目录说明)
 - [开发的架构](#开发的架构)
-- [部署](#部署)
 - [使用到的框架](#使用到的框架)
 - [贡献者](#贡献者)
   - [如何参与开源项目](#如何参与开源项目)
@@ -51,19 +55,16 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
 
 ### 上手指南
 
-请将所有链接中的“EIPsyCongGroo/mergeDuplicateVertices”改为“your_github_name/your_repository”
-
-
 
 ###### 开发前的配置要求
 
-1. xxxxx x.x.x
-2. xxxxx x.x.x
+1. CLion 2013.1.2
+2. OpenMesh 9.0.0
 
 ###### **安装步骤**
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
+2. Open main.exe in terminal with your input_file as: main.exe input_file
 
 ```sh
 git clone https://github.com/EIPsyCongGroo/mergeDuplicateVertices.git
@@ -74,21 +75,20 @@ eg:
 
 ```
 filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
+├─CMakeLists.txt
+├─main.cpp
+├─README.md
+│
+├─images
+│      spot.png
+│      spot1.png
+│
+└─models
+        spot.obj
+        spot.obj-out.obj
+        test.obj
+        test.obj-out.obj
+
 
 ```
 
@@ -98,21 +98,18 @@ filetree
 
 ### 开发的架构 
 
-请阅读[ARCHITECTURE.md](https://github.com/EIPsyCongGroo/mergeDuplicateVertices/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+Windows X64
 
-### 部署
-
-暂无
 
 ### 使用到的框架
 
-- [xxxxxxx](https://getbootstrap.com)
-- [xxxxxxx](https://jquery.com)
-- [xxxxxxx](https://laravel.com)
+- OpenMesh
+- Vcpkg
+- Cmake
 
 ### 贡献者
 
-请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
+本人是该代码唯一贡献者，有问题欢迎交流。
 
 #### 如何参与开源项目
 
@@ -133,15 +130,11 @@ filetree
 
 ### 作者
 
-xxx@xxxx
+EIPsyCongGroo
 
-知乎:xxxx  &ensp; qq:xxxxxx    
+qq:824353810    
 
  *您也可以在贡献者名单中参看所有参与该项目的开发者。*
-
-### 版权说明
-
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/EIPsyCongGroo/mergeDuplicateVertices/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
@@ -151,7 +144,7 @@ xxx@xxxx
 - [Choose an Open Source License](https://choosealicense.com)
 - [GitHub Pages](https://pages.github.com)
 - [Animate.css](https://daneden.github.io/animate.css)
-- [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
+
 
 <!-- links -->
 [your-project-path]:EIPsyCongGroo/mergeDuplicateVertices
