@@ -3,6 +3,7 @@
 # mergeMesh
 
 mergeDuplicateVertices: If there are internal boundaries in the model due to duplicate vertices, you can use this code to fix them.
+
 mergeMeshes：Multiple meshes can be merged and boundaries caused by internal duplicate points can be removed.
 <!-- PROJECT SHIELDS -->
 
