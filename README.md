@@ -1,9 +1,9 @@
 
 
-# mergeDuplicateVertices
+# mergeMesh
 
 mergeDuplicateVertices: If there are internal boundaries in the model due to duplicate vertices, you can use this code to fix them.
-
+mergeMeshes：Multiple meshes can be merged and boundaries caused by internal duplicate points can be removed.
 <!-- PROJECT SHIELDS -->
 
 <!-- PROJECT LOGO -->
@@ -11,12 +11,20 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
 
 <p align="center">
   <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
-    <img src="/images/compare.png" alt="compare" width="920" height="750">
+    <img src="images/compare.png" alt="compare" width="920" height="750">
   </a>
 
-
-
   <h3 align="center">消除模型内部边界</h3>
+
+<p align="center">
+  <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
+    <img src="images/Before.png" alt="before" width="1193" height="552">
+  </a>
+<p align="center">
+  <a href="https://github.com/EIPsyCongGroo/mergeDuplicateVertices/">
+    <img src="images/after.png" alt="before" width="1235" height="552">
+  </a>
+  <h3 align="center">合并多个模型，并去除内部边界</h3>
   <p align="center">
    绿色线为模型内部边界，消除重复点后，内部边界消失，变成一个完整模型。
     <br />
@@ -58,10 +66,16 @@ mergeDuplicateVertices: If there are internal boundaries in the model due to dup
 ###### **安装步骤**
 
 1. Clone the repo
-2. Open main.exe in terminal with your input_file as: main.exe input_file
+2. cmake and build the project
+3. Open merge.exe in terminal with your input_file or folder_path as: merge.exe input_file or folder_path
 
 ```sh
 git clone https://github.com/EIPsyCongGroo/mergeDuplicateVertices.git
+mkdir build
+cd build
+cmake .. 
+merge.exe ../models/spot.obj
+merge.exe ../models/mergeMeshes
 ```
 
 ### 文件目录说明
