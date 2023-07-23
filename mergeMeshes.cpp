@@ -47,6 +47,18 @@ Mesh mergeMeshes::mergMeshes(const std::vector<Mesh> &meshes) {
                 face_vhandles.push_back(vhandle[i++]);
             }
             mergedMesh.add_face(face_vhandles);
+            /*if(!mergedMesh.add_face(face_vhandles).is_valid())
+            {
+                if(!mergedMesh.add_face(vhandle[1], vhandle[0], vhandle[2]).is_valid())
+                {
+                    mergedMesh.add_face(vhandle[1], vhandle[2], vhandle[0]);}
+                else {
+                    mergedMesh.add_face(vhandle[1], vhandle[0], vhandle[2]);}
+            }
+            else
+            {
+                mergedMesh.add_face(face_vhandles);
+            }*/
         }
     }
     std::cout<<"merge complete!"<<"\n";

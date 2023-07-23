@@ -59,12 +59,12 @@ bool write_mesh(const Mesh& mesh, const std::string& output_filename) {
 int main(int argc, char* argv[]) {
  
     Mesh mesh, new_mesh;
-    //std::string input_file = "../models/spot.obj";
-    std::string input_file = "../models/mergeMeshes";
+    std::string input_file = "../models/oriented1.off";
+    //std::string input_file = "../models/human/LOD0";
     if(argc == 2)
          input_file = argv[1];
     int option;
-    option = input_file.rfind(".obj");
+    option = input_file.rfind(".obj") || input_file.rfind(".off");
 //    std::cout<<"which option do you choose?"<<"\n";
 //    std::cout<<"1. merge vertices"<<"\n"<<"2. merge meshes"<<"\n";
 //    std::cin>>option;
