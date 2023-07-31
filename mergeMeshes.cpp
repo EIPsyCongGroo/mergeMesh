@@ -24,19 +24,32 @@ Mesh mergeMeshes::mergMeshes(const std::vector<Mesh> &meshes) {
     std::map < Mesh ::Point , Mesh ::VertexHandle> Vmap;
     for (const auto & mesh:meshes) {
         for (const auto& v: mesh.vertices()) {
-            auto it = Vmap.find(mesh.point(v));
-            if (it != Vmap.end())
-            {
-                Vmap[mesh.point(v)] = it->second;
-            }
-            else
-            {
+            //auto it = Vmap.find(mesh.point(v));
+            if(Vmap.empty()){
                 Mesh ::VertexHandle new_v = mergedMesh.add_vertex(mesh.point(v));
                 Vmap[mesh.point(v)] = new_v;
             }
+            else{
+                for (auto it:Vmap) {
+                    if ((it.first - mesh.point(v)).length()< 1e-6)
+                    {
+                        Vmap[mesh.point(v)] = it.second;
+                    }
+                    else
+                    {
+                        Mesh ::VertexHandle new_v = mergedMesh.add_vertex(mesh.point(v));
+                        Vmap[mesh.point(v)] = new_v;
+                    }
+
+                }
+            }
+
             //std::cout<<mesh.point(v)<<"\t"<<Vmap[mesh.point(v)]<<"\n";
         }
 
+    }
+    for (const auto & mesh:meshes)
+    {
         for (const auto & f: mesh.faces()) {
             Mesh::VertexHandle vhandle[3];
             std::vector<Mesh ::VertexHandle> face_vhandles;
@@ -47,18 +60,7 @@ Mesh mergeMeshes::mergMeshes(const std::vector<Mesh> &meshes) {
                 face_vhandles.push_back(vhandle[i++]);
             }
             mergedMesh.add_face(face_vhandles);
-            /*if(!mergedMesh.add_face(face_vhandles).is_valid())
-            {
-                if(!mergedMesh.add_face(vhandle[1], vhandle[0], vhandle[2]).is_valid())
-                {
-                    mergedMesh.add_face(vhandle[1], vhandle[2], vhandle[0]);}
-                else {
-                    mergedMesh.add_face(vhandle[1], vhandle[0], vhandle[2]);}
-            }
-            else
-            {
-                mergedMesh.add_face(face_vhandles);
-            }*/
+
         }
     }
     std::cout<<"merge complete!"<<"\n";
