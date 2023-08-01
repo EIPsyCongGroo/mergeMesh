@@ -6,8 +6,7 @@
 
 std::vector<Mesh> mergeMeshes::readMeshes(std::string file_path) {
     std::vector<Mesh> meshes;
-    for (const auto& entry : std::filesystem::directory_iterator(file_path))
-    {
+    for (const auto &entry: std::filesystem::directory_iterator(file_path)) {
         Mesh mesh;
         std::string mesh_path = entry.path().string();
         if (!OpenMesh::IO::read_mesh(mesh, mesh_path)) {
@@ -15,47 +14,37 @@ std::vector<Mesh> mergeMeshes::readMeshes(std::string file_path) {
         }
         meshes.push_back(mesh);
     }
-    std::cout<<"ready to merge "<<meshes.size()<<" meshes"<<"\n";
+    std::cout << "ready to merge " << meshes.size() << " meshes" << "\n";
     return meshes;
 }
 
 Mesh mergeMeshes::mergMeshes(const std::vector<Mesh> &meshes) {
     Mesh mergedMesh;
-    std::map < Mesh ::Point , Mesh ::VertexHandle> Vmap;
-    for (const auto & mesh:meshes) {
-        for (const auto& v: mesh.vertices()) {
-            //auto it = Vmap.find(mesh.point(v));
-            if(Vmap.empty()){
-                Mesh ::VertexHandle new_v = mergedMesh.add_vertex(mesh.point(v));
+    std::map<Mesh::Point, Mesh::VertexHandle> Vmap;
+    for (const auto &mesh: meshes) {
+        for (const auto &v: mesh.vertices()) {
+            auto it = std::find_if(Vmap.begin(), Vmap.end(),
+                                   [&](const std::pair<Mesh::Point, Mesh::VertexHandle> &item) {
+                                       return (item.first - mesh.point(v)).length() < 1e-6;
+                                   });
+            if (it != Vmap.end()) {
+                Vmap[mesh.point(v)] = it->second;
+            } else {
+                Mesh::VertexHandle new_v = mergedMesh.add_vertex(mesh.point(v));
                 Vmap[mesh.point(v)] = new_v;
             }
-            else{
-                for (auto it:Vmap) {
-                    if ((it.first - mesh.point(v)).length()< 1e-6)
-                    {
-                        Vmap[mesh.point(v)] = it.second;
-                    }
-                    else
-                    {
-                        Mesh ::VertexHandle new_v = mergedMesh.add_vertex(mesh.point(v));
-                        Vmap[mesh.point(v)] = new_v;
-                    }
-
-                }
-            }
-
-            //std::cout<<mesh.point(v)<<"\t"<<Vmap[mesh.point(v)]<<"\n";
+            
         }
-
+        std::cout << "one Mesh processed" << "\n";
     }
-    for (const auto & mesh:meshes)
-    {
-        for (const auto & f: mesh.faces()) {
+    std::cout << "vertex processed" << "\n";
+    for (const auto &mesh: meshes) {
+        for (const auto &f: mesh.faces()) {
             Mesh::VertexHandle vhandle[3];
-            std::vector<Mesh ::VertexHandle> face_vhandles;
+            std::vector<Mesh::VertexHandle> face_vhandles;
             face_vhandles.clear();
-            int i=0;
-            for(const auto &fv:mesh.fv_ccw_range(f)){
+            int i = 0;
+            for (const auto &fv: mesh.fv_ccw_range(f)) {
                 vhandle[i] = Vmap[mesh.point(fv)];
                 face_vhandles.push_back(vhandle[i++]);
             }
@@ -63,7 +52,7 @@ Mesh mergeMeshes::mergMeshes(const std::vector<Mesh> &meshes) {
 
         }
     }
-    std::cout<<"merge complete!"<<"\n";
+    std::cout << "merge complete!" << "\n";
     return mergedMesh;
 }
 

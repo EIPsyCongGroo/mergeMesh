@@ -18,7 +18,10 @@ Mesh merge_duplicate_vertices(Mesh& mesh) {
     std::cout << "before vertices: " << mesh.n_vertices()<<"\n";
     std::cout << "before faces: " << mesh.n_faces()<<"\n";
     for (const auto& v: mesh.vertices()) {
-        auto it = Vmap.find(mesh.point(v));
+        auto it = std::find_if(Vmap.begin(), Vmap.end(),
+                               [&](const std::pair<Mesh::Point, Mesh::VertexHandle> &item) {
+                                   return (item.first - mesh.point(v)).length() < 1e-6;
+                               });
         if (it != Vmap.end())
         {
             Vmap[mesh.point(v)] = it->second;

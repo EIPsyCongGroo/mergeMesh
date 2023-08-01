@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(merge)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
+#set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "" FORCE)
 set(VCPKG_TARGET_TRIPLET x64-windows)
 
 find_package(openmesh  REQUIRED)
